@@ -6,6 +6,8 @@ module br {
 		    module Sino {
 		        interface ISino {
 			    void noite( in boolean noite );
+			    boolean entradaDeCliente();
+			    void saidaDeCliente();
 			};
 		    };
 		};

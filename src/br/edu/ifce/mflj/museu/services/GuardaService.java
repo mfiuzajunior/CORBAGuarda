@@ -17,6 +17,7 @@ import org.omg.PortableServer.POAPackage.WrongPolicy;
 import br.edu.ifce.mflj.museu.Sino.ISino;
 import br.edu.ifce.mflj.museu.Sino.ISinoHelper;
 import br.edu.ifce.mflj.museu.impl.Guarda;
+import br.edu.ifce.mflj.museu.observer.SinoListener;
 import br.edu.ifce.mflj.museu.observer.VisitantesListener;
 
 public class GuardaService implements Runnable {
@@ -110,7 +111,12 @@ public class GuardaService implements Runnable {
 		guarda.addVisitantesListener( visitantesListener );
 	}
 
+	public void registrarSinoListener( SinoListener sinoListener ){
+		guarda.addSinoListener( sinoListener );
+	}
+
 	public void run(){
 		this.orb.run();
+		System.out.println("Guarda online");
 	}
 }

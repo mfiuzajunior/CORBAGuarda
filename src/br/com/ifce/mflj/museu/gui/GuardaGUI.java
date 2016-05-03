@@ -7,13 +7,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import br.edu.ifce.mflj.museu.observer.SinoListener;
 import br.edu.ifce.mflj.museu.observer.VisitantesListener;
 import br.edu.ifce.mflj.museu.services.GuardaService;
 
-public class GuardaGUI extends JFrame implements ActionListener, VisitantesListener {
+public class GuardaGUI extends JFrame implements ActionListener, VisitantesListener, SinoListener {
 
 	private static final long	serialVersionUID = 5883698476830081453L;
 	private static final int	LARGURA			= 200,
@@ -56,6 +58,7 @@ public class GuardaGUI extends JFrame implements ActionListener, VisitantesListe
 	private void iniciarGuardaService( String[] args ) {
 		guardaService = new GuardaService( args );
 		guardaService.registrarVisitanteListener( this );
+		guardaService.registrarSinoListener( this );
 		new Thread( guardaService ).start();
 	}
 
@@ -107,5 +110,10 @@ public class GuardaGUI extends JFrame implements ActionListener, VisitantesListe
 	@Override
 	public void decrementarVisitantes() {
 		labelVisitantes.setText( "Visitantes: " + ( quantidadeDeVisitantes == 0 ? 0 : --quantidadeDeVisitantes ) );
+	}
+
+	@Override
+	public void tocarSom() {
+		JOptionPane.showMessageDialog(this, "Bing");
 	}
 }
