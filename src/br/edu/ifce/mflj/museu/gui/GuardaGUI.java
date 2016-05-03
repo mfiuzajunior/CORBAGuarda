@@ -1,4 +1,4 @@
-package br.com.ifce.mflj.museu.gui;
+package br.edu.ifce.mflj.museu.gui;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
